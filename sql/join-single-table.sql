@@ -1,3 +1,5 @@
+--Lecture "SQL Queries III - Join, Single table," 2017-02-14
+
 SELECT *
 FROM objects
 
