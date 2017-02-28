@@ -1,3 +1,5 @@
+--Lecture "SQL Queries IV - Join, many tables," 2017-02-16
+
 --What objects are green?
 --My solution
 SELECT *
