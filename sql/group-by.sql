@@ -1,3 +1,5 @@
+--Lecture "SQL Queries VI - GROUP BY," 2017-02-23
+
 --How many tickets sold by the end of April?
 --(i.e. purchase.date < "2011-05-01 00:00:00")
 
