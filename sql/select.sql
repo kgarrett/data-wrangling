@@ -1,3 +1,5 @@
+--Lecture "SQL Queries I - Intro and SELECT basics," 2017-02-09
+
 SELECT *
 FROM cars
 
