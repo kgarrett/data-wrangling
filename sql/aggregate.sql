@@ -1,4 +1,4 @@
-Lecture "SQL Queries V - Aggregate Functions," 2017-02-21
+--Lecture "SQL Queries V - Aggregate Functions," 2017-02-21
 
 SELECT *
 FROM tickets
