@@ -1,4 +1,4 @@
---
+----Lecture "Insert, Update, Delete," 2017-03-02
 
 --Warm-up
 --Which venue had the minimum capacity?
