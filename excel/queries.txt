@@ -1,0 +1,72 @@
+--Lecture "Sorts, Filters, Joins," 2017-03-07
+
+Often have to use Excel because it slips into everyday workflow in a lot of different contexts, ubiquitous and available, do not have to install a server
+Excel vs. SQL
+  - Excel opens a file; loading that file into RAM and memory
+  - As you move around in the file, Excel has to account for all the data present
+  - Sometimes computer too slow to handle, not able to open or lags
+  - SQL does not have to load data into memory to work; load just what it needs at the moment into RAM
+  - Excel are more than just the data, also formulas which are computed on the fly
+Excel
+  - Set up sheets to be as similar to tabular data
+  - Use first row as a header row, like column names in SQL
+  - Everything under first row are records where attributes/columns are linked across a row
+Export data from phpmyadmin
+  - Export at the bottom of the page after selecting a table
+  - Format: CSV
+  - Check Custom - display all possible options
+  - Check Put column names in the first row
+Sort
+  - What data are we going to sort? (column, sheet, etc.)
+  - Data -> Sort
+  - Check My list has headers
+  - Can sort on specific columns, similar to ORDER BY
+
+SELECT *
+FROM performances
+ORDER BY performances.venue_id ASC, performances.start ASC
+
+Filter
+  - Similar to conditions in the WHERE clause
+  - Data -> Filter
+  - Triangles show up and allow us to put conditions on columns
+
+SELECT *
+FROM performances
+WHERE performances.venue_id = 5
+
+  - SELECT queries do not alter the table but makes a copy of the data
+  - Excel always has order so when you come back next time, the table will remain filtered
+  - When rows or columns are hidden, the remaining rows/columns are highlighted
+  - When columns are filtered, the icon contains a filter rather than an upside down triangle
+
+Calculations
+  - Using calculations, we can perform aggregate functions: COUNT, SUM, AVG
+  - Formula begins with =
+  - When copying a formula, hold down Command over the small blue square and double click to copy all the way to the end of the data
+  - Set constants by using a dollar sign ($)
+  - Good idea to create a Summary worksheet with all your calculations/queries then the rest of the data remains unaltered
+
+Joins
+  - JOINS are hard to do in Excel
+  - No primary or foreign key, how do we create a join statement?
+  - Eliminate invalid rows after building a giant table with all the rows and columns
+
+VLOOKUP
+INDEX MATCH - much more flexible
+Formula:
+=INDEX(user_types.csv!$A$2:$A$7,MATCH(log_data.csv!$B2,user_types.csv!$B$2:$B$7,0))
+
+  - MATCH returns a number and then INDEX uses that number to find the value
+
+IS NA
+  - If you get N/A, do an action back
+  - The question we are asking, "Is it N/A?"
+
+=IF(
+   ISNA(
+       INDEX(user_types.csv!$A$2:$A$7,MATCH(log_data.csv!$B2,user_types.csv!$B$2:$B$7,0))
+   ),
+   "user",
+   INDEX(user_types.csv!$A$2:$A$7,MATCH(log_data.csv!$B2,user_types.csv!$B$2:$B$7,0))
+)
