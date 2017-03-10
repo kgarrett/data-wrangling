@@ -1,0 +1,86 @@
+--Lecture "Pivot Tables and Graphs," 2017-03-09
+
+- SQL GROUP BY and aggregate functions (SUM and AVG) are achieved by pivot tables
+  - aka grouping tables
+
+- What is the performance with the highest revenue?
+
+SELECT performances.id,
+       bands.name,
+       performances.start,
+       SUM(tickets.price) as revenue
+FROM tickets
+  JOIN performances
+    ON tickets.performance_id = performances.id
+  JOIN bands
+    ON performances.band_id = bands.id
+GROUP BY performances.id
+ORDER BY revenue DESC
+
+- To replicate this in Excel we need the relevant data
+- Create aliases so that phpmyadmin exports the data with table names
+
+SELECT tickets.ticketnum AS "ticket_num",
+       tickets.price AS "ticket_price",
+       performances.id AS "performance_id",
+       performances.start AS "performance_start",
+       bands.name AS "band_name"
+FROM tickets
+  JOIN performances
+    ON tickets.performance_id = performances.id
+  JOIN bands
+    ON performances.band_id = bands.id
+
+Data -> Summarize with Pivot Table -> Smart enough to grab the right data if cursor in A1
+
+- Grouping variable is performance.id
+- Grouping variables are always the first thing in the select
+- Column on the left in the results
+- Each group in a row
+
+- Take grouping variable as one row per group (Row Area - Drag performance_id to the Rows box)
+- One row per group
+- Drop ticket_price to the Values box
+  - By default calculates the sum for each group
+  - Choose which aggregate function we want to apply
+  - Bring up the options by clicking on the i icon
+  - COUNT simply counts the number of rows in that group
+
+- Interested in the popularity of different venues
+- Cross tab: rather than subgroup down the page have them in columns
+- Can do this with pivot tables but not SQL query
+
+SELECT tickets.ticketnum AS "ticket_num",
+       tickets.price AS "ticket_price",
+       performances.start AS "performance_start",
+       bands.name AS "band_name",
+       venues.name as "venue_name"
+FROM tickets
+  JOIN performances
+    ON tickets.performance_id = performances.id
+  JOIN bands
+    ON performances.band_id = bands.id
+  JOIN venues
+    ON performances.venue_id = venues.id
+
+- venue_name Rows
+- performance_start Columns
+- Click on one of the dates, right click, and Group and Outline -> Group
+- ticket_price Values
+
+- Report Filter
+  - Filters out rows, equivalent of data condition in the WHERE clause 
+
+- Business intelligence tools
+- OLAP cube
+  - metaphor cube concept 
+  - Looking on different sides of the cube
+  - Can also view from the side of the cube 
+  - Different manipulation and display from SQL
+
+Graphing
+- Pivot Charts 
+- Taking the data and graphing it differently 
+- Select the data and Insert -> Chart
+- Right click graph and Select Data to manipulate 
+
