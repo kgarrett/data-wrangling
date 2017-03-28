@@ -26,3 +26,16 @@ yourName = input("What's your name, then?")
 # spits out the prompt to the terminal, then waits for user to enter some text and hit return, before ending the program
 
 print("Hello, " + yourName + ", welcome to Python.")
+
+# cat filename
+# Concatenate: view contents of the file in terminal, dumps out the whole file
+
+# head filename
+# Just see the first 10 lines of the file
+
+# tail filename
+# Just see that last 10 lines of the file
+
+# Shortcuts:
+# single dot (.) means this directory
+# double dot (..) means the directory above
